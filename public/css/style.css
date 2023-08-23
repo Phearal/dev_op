@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --eerie-black: #1c1c1c;
+    --jet: #323232;
+    --silver: #a7a7a7;
+    --saffron: #eec224;
+    --white: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6, .title {
+    font-family: 'Grenze', serif;
+    color: var(--white);
+}
+p, a, .text {
+    font-family: 'Poppins', sans-serif;
+    color: var(--silver);
+}
+body {
+    background-color: var(--jet);
+}
+
+/* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER */
+header {
+    background-color: var(--eerie-black);
+}
+.user-icon {
+    font-size: 2rem;
+    color:  var(--saffron);
+    cursor: pointer;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.min1000 {
+    display: flex;
+}
+@media (max-width: 1000px) {
+    .min1000 {
+        display: none;
+    }
+    .max1000 {
+        display: flex;
+    }
+}
+/* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER */
