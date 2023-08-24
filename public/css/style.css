@@ -7,7 +7,11 @@
     --carrot-orange: #ed9624;
     --white: #ffffff;
 }
-* {
+::selection {
+    background-color: var(--carrot-orange);
+    color: var(--white);
+  }
+a, ul, li {
     text-decoration: none;
     list-style: none;
 }
@@ -98,8 +102,11 @@ header {
     height: 100%;
     overflow: hidden;
 }
+.article-date {
+    font-size: 0.7em;
+}
 .taglist {
-    margin: 0px;
+    margin: 0 0 10px 0;
     padding: 0px;
     display: flex;
     flex-direction: row;
@@ -119,8 +126,8 @@ header {
     justify-content: center;
     align-items: center;
 }
-.article-date {
-    font-size: 0.7em;
+.article h3:hover {
+    color: var(--carrot-orange);
 }
 .article-description-container {
     height: 150px;

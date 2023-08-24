@@ -11,13 +11,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
     #[Route('/', name: 'app_blog')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function articles(EntityManagerInterface $entityManager): Response
     {
         $articles = $entityManager->getRepository(Article::class)->findAll();
         
         return $this->render('blog/blog.html.twig', [
-            'controller_name' => 'BlogController',
             'articles' => $articles
+        ]);
+    }
+
+    #[Route('/articles/{id}', name: 'app_article')]
+    public function article(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $article = $entityManager->getRepository(Article::class)->find($id);
+        
+        return $this->render('blog/article.html.twig', [
+            'article' => $article
         ]);
     }
 }

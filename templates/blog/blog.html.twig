@@ -5,7 +5,9 @@
 {% block body %}
     <main>
         <div id="article-container">
-            {% include "_partials/_article.html.twig" %}
+            {% for article in articles %}
+                {% include "_partials/_article.html.twig" %}
+            {% endfor %}
         </div>
     </main>
 {% endblock %}

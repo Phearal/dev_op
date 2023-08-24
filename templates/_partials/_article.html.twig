@@ -2,76 +2,25 @@
 	<img src="{{ asset('img/article/daveslesdevs.png') }}" class="card-img-top" alt="">
 	<div class="card-body article-body">
 		<div>
-			<p class="article-date">Publié le : 22/07/2023</p>
+			<p class="article-date">Publié le : {{ article.createdAt|date("d/m/Y") }}</p>
 			<ul class="taglist">
-				<li class="tag">php</li>
-				<li class="tag">start-up</li>
-				<li class="tag">dave</li>
+				{% for tag in article.tags %}
+					<li class="tag">{{ tag.name }}</li>
+				{% endfor %}
 			</ul>
-			<h3>Dave&lpar;x&rpar;, la start-up qui décolle</h3>
-			<p class="article-description">LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune : l'excellence, un sens aiguisé du détail et la volonté de mener à bien les plus beaux projets. Une étoile du Nord : atteindre la perfection sans renoncer à la réactivité et adaptation indispensable à chaque projet.</p>
+			<a href="{{ path('app_article', {id: article.id}) }}"><h3>{{ article.title }}</h3></a>
+			<p class="article-description">{{ article.introduction }}</p>
 		</div>
 		<div class="article-reaction-container">
 			<span>
 				<i class="bi bi-hand-thumbs-up"></i>
-				<p>27</p>
+				<p>{{ article.likes }}</p>
 			</span>
 			<span>
 				<i class="bi bi-chat-left-text"></i>
-				<p>5</p>
+				<p>{{ article.comments|length }}</p>
 			</span>
 		</div>
 	</div>
 </article>
-<article class="card article">
-	<img src="{{ asset('img/article/daveslesdevs.png') }}" class="card-img-top" alt="">
-	<div class="card-body article-body">
-		<div>
-			<p class="article-date">Publié le : 22/07/2023</p>
-			<ul class="taglist">
-				<li class="tag">php</li>
-				<li class="tag">start-up</li>
-				<li class="tag">dave</li>
-			</ul>
-			<h3>Les développeurs Web, rockstars du marché de l'emploi</h3>
-			<p class="article-description">Une étoile du Nord : atteindre la perfection sans renoncer à la réactivité et adaptation indispensable à chaque projet.</p>
-		</div>
-		<div class="article-reaction-container">
-			<span>
-				<i class="bi bi-hand-thumbs-up"></i>
-				<p>27</p>
-			</span>
-			<span>
-				<i class="bi bi-chat-left-text"></i>
-				<p>5</p>
-			</span>
-		</div>
-	</div>
-</article>
-<article class="card article">
-	<img src="{{ asset('img/article/daveslesdevs.png') }}" class="card-img-top" alt="">
-	<div class="card-body article-body">
-		<div>
-			<p class="article-date">Publié le : 22/07/2023</p>
-			<ul class="taglist">
-				<li class="tag">php</li>
-				<li class="tag">start-up</li>
-				<li class="tag">dave</li>
-			</ul>
-			<h3>Dave&lpar;x&rpar;, la start-up qui décolle</h3>
-            <div class="article-description-container">
-            	<p class="article-description">LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune :LES DAVE réunit les meilleurs développeurs et talents du digital. Une vision commune : l'excellence, un sens aiguisé du détail et la volonté de mener à bien les plus beaux projets. Une étoile du Nord : atteindre la perfection sans renoncer à la réactivité et adaptation indispensable à chaque projet.</p>
-            </div>
-		</div>
-		<div class="article-reaction-container">
-			<span>
-				<i class="bi bi-hand-thumbs-up"></i>
-				<p>27</p>
-			</span>
-			<span>
-				<i class="bi bi-chat-left-text"></i>
-				<p>5</p>
-			</span>
-		</div>
-	</div>
-</article>
+
