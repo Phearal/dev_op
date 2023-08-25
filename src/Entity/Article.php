@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use DateTimeZone;
 use App\Repository\ArticleRepository;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -30,9 +29,6 @@ class Article
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $likes = null;
-
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class)]
     private Collection $comments;
 
@@ -42,12 +38,15 @@ class Article
     #[ORM\Column(length: 512)]
     private ?string $introduction = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'liked_articles')]
+    private Collection $likes;
+
     public function __construct()
     {
-        $timezone = new DateTimeZone('Europe/Paris');
-        $this->createdAt = new \DateTimeImmutable('now', $timezone);
+        $this->createdAt = new \DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,18 +98,6 @@ class Article
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getLikes(): ?int
-    {
-        return $this->likes;
-    }
-
-    public function setLikes(?int $likes): static
-    {
-        $this->likes = $likes;
 
         return $this;
     }
@@ -180,6 +167,30 @@ class Article
     public function setIntroduction(string $introduction): static
     {
         $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(User $like): static
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes->add($like);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(User $like): static
+    {
+        $this->likes->removeElement($like);
 
         return $this;
     }
