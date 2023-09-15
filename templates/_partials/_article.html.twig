@@ -18,7 +18,7 @@
 		</div>
 		<div class="article-reaction-container">
 			<span>
-				<i class="bi bi-hand-thumbs-up"></i>
+				<i class="bi bi-hand-thumbs-up{% if app.user and app.user.getLikedArticles().contains(article) %}-fill liked-icon{% endif %}"></i>
 				<p>{{ article.likes|length }}</p>
 			</span>
 			<span>

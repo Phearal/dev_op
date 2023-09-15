@@ -176,4 +176,8 @@ header {
     font-size: 1em;
     margin: 0px;
 }
+.liked-icon {
+    color: var(--carrot-orange) !important;
+    fill: var(--carrot-orange) !important;
+}
 /* ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES */
