@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Dev | OP : {% block title %}{% endblock %}</title>
+        <title>Dev | OP - {% block title %}{% endblock %}</title>
         <link rel="icon" href="{{ asset('img/favicon.png') }}">
         
         <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
@@ -19,6 +19,8 @@
         {% block header %}
             {% include "_partials/header/_header.html.twig" %}
         {% endblock %}
-        {% block body %}{% endblock %}
+        <main>
+            {% block body %}{% endblock %}
+        </main>
     </body>
 </html>

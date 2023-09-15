@@ -23,10 +23,26 @@ class BlogController extends AbstractController
     #[Route('/articles/{id}', name: 'app_article')]
     public function article(EntityManagerInterface $entityManager, int $id): Response
     {
-        $article = $entityManager->getRepository(Article::class)->find($id);
-        
+        $article_repository = $entityManager->getRepository(Article::class);
+        $article = $article_repository->find($id);
+
+        $other_articles = [];
+        $article_tags = $article->getTags();
+        foreach($article_tags as $tag) {
+            if (count($other_articles) >= 3) {
+                break;
+            }
+            $tag_articles = $tag->getArticle();
+            foreach ($tag_articles as $tag_article) {
+                if (count($other_articles) < 3 && $tag_article->getId() != $article->getId() && !in_array($tag_article, $other_articles)) {
+                    $other_articles[] = $tag_article;
+                }
+            }
+        }
+
         return $this->render('blog/article.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'other_articles' => $other_articles
         ]);
     }
 }
