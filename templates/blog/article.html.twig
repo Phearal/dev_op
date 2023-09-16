@@ -36,12 +36,34 @@
 		</article>
 
 		<section id="other-articles">
-			<h2>Autres articles</h2>
+			<h2>Autres articles :</h2>
 			<div id="article-container">
 				{% for article in other_articles %}
 					{% include "_partials/_article.html.twig" %}
 				{% endfor %}
 			</div>
+		</section>
+
+		<section id="comments">
+			{{ form_start(comment_form) }}
+			{{ form_errors(comment_form) }}
+			{{ form_row(comment_form.content, {
+				'attr': {
+					'placeholder': 'Écrire un commentaire',
+					'class': 'form-control mb-3 comment-content'
+					},
+				label: false
+			}) }}
+			{{ form_widget(comment_form._token) }}
+			<button type="submit" class="btn btn-lg btn-primary form-confirm">Commenter</button>
+			{{ form_end(comment_form) }}
+
+			<h2>Commentaires ({{ article.comments|length }}) :</h2>
+			<ul id="comments-container">
+				{% for comment in article.comments %}
+					{% include "_partials/_comment.html.twig" %}
+				{% endfor %}
+			</ul>
 		</section>
 	</main>
 {% endblock %}

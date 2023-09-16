@@ -29,7 +29,7 @@
     white-space: nowrap;
     align-self: flex-end;
 }
-.article-reaction-container {
+.comment-likes-container {
     margin: unset;
 }
 .article-img {
@@ -57,3 +57,74 @@
         width: 90%;
     }
 }
+
+/* COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS */
+#comments {
+    width: 100%;
+}
+#comments-container {
+    padding: 0;
+    width: 100%;
+}
+.comment {
+    padding: 20px 0;
+    border-bottom: 1px solid #5b5b5b;
+}
+.comment:nth-child(1) {
+    border-top: 1px solid #5b5b5b;
+}
+.comment-like-modif {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.comment-likes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-self: flex-start;
+    gap: 20px;
+    width: unset;
+    margin-top: 10px;
+}
+.comment-likes-container span {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.comment-likes-container i, .comment-likes-container p {
+    color: var(--silver);
+    font-size: 1em;
+    margin: 0px;
+}
+.modified {
+    align-self: flex-end;
+    font-size: 0.7rem;
+    margin: 0;
+}
+#comments form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 50px 0;
+}
+.comment-content {
+    resize: none;
+    height: 200px;
+    font-family: 'Poppins', sans-serif !important;
+}
+.form-confirm {
+    background-color: var(--eerie-black);
+    border: none;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1rem;
+    align-self: flex-end;
+    margin: 0;
+}
+.form-confirm:hover {
+    background-color: var(--silver);
+}
+/* COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS */

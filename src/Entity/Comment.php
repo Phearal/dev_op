@@ -34,10 +34,16 @@ class Comment
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $timezone = new DateTimeZone('Europe/Paris');
         $this->createdAt = new \DateTimeImmutable('now', $timezone);
+        $this->setLikes(0);
+        $this->setDislikes(0);
     }
 
     public function getId(): ?int
@@ -113,6 +119,18 @@ class Comment
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

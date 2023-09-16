@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Comment;
+use App\Form\CommentType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
@@ -21,7 +24,7 @@ class BlogController extends AbstractController
     }
 
     #[Route('/articles/{id}', name: 'app_article')]
-    public function article(EntityManagerInterface $entityManager, int $id): Response
+    public function article(EntityManagerInterface $entityManager, int $id, Request $request): Response
     {
         $article_repository = $entityManager->getRepository(Article::class);
         $article = $article_repository->find($id);
@@ -39,10 +42,29 @@ class BlogController extends AbstractController
                 }
             }
         }
+        
+        $comment = new Comment();
+        $comment_form = $this->createForm(CommentType::class, $comment);
+
+        $comment_form->handleRequest($request);
+        if ($comment_form->isSubmitted() && $comment_form->isValid()) {
+            $comment->setArticle($article);
+            $comment->setUser($this->getUser());
+            $entityManager->persist($comment);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_article', ['id' => $id]);
+        }
 
         return $this->render('blog/article.html.twig', [
             'article' => $article,
-            'other_articles' => $other_articles
+            'other_articles' => $other_articles,
+            'comment_form' => $comment_form->createView()
         ]);
+    }
+
+    #[Route('/like/{id}', name: 'like_article')]
+    public function likeArticle(Request $request, Article $article): Response
+    {
+        // ...
     }
 }
