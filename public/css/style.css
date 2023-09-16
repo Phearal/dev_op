@@ -181,4 +181,11 @@ header {
     color: var(--carrot-orange) !important;
     fill: var(--carrot-orange) !important;
 }
+
+@media (max-width: 1250px) {
+    #article-container {
+        width: 95%;
+        justify-content: space-evenly;
+    }
+}
 /* ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES */
