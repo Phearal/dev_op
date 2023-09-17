@@ -31,6 +31,9 @@ p, a, .text, label {
     font-family: 'Poppins', sans-serif;
     color: var(--silver);
 }
+.current-page {
+    color: var(--carrot-orange);
+}
 
 /* HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER - HEADER */
 header {

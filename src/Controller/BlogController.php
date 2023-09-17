@@ -13,10 +13,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
-    #[Route('/', name: 'app_blog')]
-    public function articles(EntityManagerInterface $entityManager): Response
+    #[Route('/', name: 'app_home')]
+    public function home(): Response
     {
-        $articles = $entityManager->getRepository(Article::class)->findAll();
+        return $this->redirectToRoute('app_blog', ['tri' => "derniers-articles"]);
+    }
+    
+    #[Route('/blog/{tri}', name: 'app_blog')]
+    public function articles(EntityManagerInterface $entityManager, string $tri = "derniers-articles"): Response
+    {
+        switch ($tri) {
+            case "top-articles":
+                $articles = $entityManager->getRepository(Article::class)->findBy([], ['createdAt' => 'ASC']);
+                break;
+            case "derniers-articles":
+                $articles = $entityManager->getRepository(Article::class)->findBy([], ['createdAt' => 'DESC']);
+                break;
+            default:
+                $articles = $entityManager->getRepository(Article::class)->findBy([], ['createdAt' => 'DESC']);
+        }
         
         return $this->render('blog/blog.html.twig', [
             'articles' => $articles

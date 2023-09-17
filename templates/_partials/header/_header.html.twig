@@ -7,10 +7,10 @@
 
 			<ul id="header-menu" class="navbar-nav min1000">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Top articles</a>
+					<a class="nav-link {% if app.request.attributes.get('tri') == 'top-articles' %}current-page{% endif %}" href="{{ path('app_blog', {'tri': 'top-articles'}) }}">Top articles</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Derniers articles</a>
+					<a class="nav-link {% if app.request.attributes.get('tri') == 'derniers-articles' %}current-page{% endif %}" href="{{ path('app_blog', {'tri': 'derniers-articles'}) }}">Derniers articles</a>
 				</li>
 			</ul>
 
@@ -37,7 +37,7 @@
 					</li>
 					{% if is_granted('ROLE_ADMIN') %}
 						<li>
-							<a class="dropdown-item" href="#">Admin</a>
+							<a class="dropdown-item" href="{{ path('app_admin') }}">Admin</a>
 						</li>
 					{% endif %}
 				</ul>

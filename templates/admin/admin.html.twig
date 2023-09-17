@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+	<ul class="nav flex-column" id="admin-menu">
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('app_new_article') }}">Créer un article</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Articles</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Commentaires</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Utilisateurs</a>
+		</li>
+	</ul>
+{% endblock %}
