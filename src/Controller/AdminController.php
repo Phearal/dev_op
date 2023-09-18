@@ -31,6 +31,7 @@ class AdminController extends AbstractController
 
         if ($article_form->isSubmitted() && $article_form->isValid()) {
             $img_article = $article_form->get('image')->getData();
+            $article->setAuthor($this->getUser());
 
             if ($img_article) {
                 $originalFilename = pathinfo($img_article->getClientOriginalName(), PATHINFO_FILENAME);

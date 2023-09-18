@@ -41,6 +41,10 @@ class Article
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'liked_articles')]
     private Collection $likes;
 
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
@@ -191,6 +195,18 @@ class Article
     public function removeLike(User $like): static
     {
         $this->likes->removeElement($like);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }

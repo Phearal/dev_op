@@ -8,12 +8,12 @@
 		<div class="comment-likes-container">
 			<span>
 				<i class="bi bi-hand-thumbs-up"></i>
-				<p>{{ comment.likes }}</p>
+				<p>{{ comment.likes|length }}</p>
 			</span>
-			<span>
+			{# <span>
 				<i class="bi bi-hand-thumbs-down"></i>
 				<p>{{ comment.dislikes }}</p>
-			</span>
+			</span> #}
 		</div>
 		{% if comment.modified == true %}
 			<p class="modified">Modifié</p>

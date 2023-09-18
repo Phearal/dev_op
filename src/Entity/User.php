@@ -46,12 +46,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
+    #[ORM\ManyToMany(targetEntity: Comment::class, mappedBy: 'comment_likes')]
+    private Collection $liked_comments;
+
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Article::class)]
+    private Collection $articles;
+
     public function __construct()
     {
         $this->id = Uuid::v4();
         $this->createdAt = new \DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
         $this->liked_articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->liked_comments = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?Uuid
@@ -199,6 +207,63 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($comment->getUser() === $this) {
                 $comment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getLikedComments(): Collection
+    {
+        return $this->liked_comments;
+    }
+
+    public function addLikedComment(Comment $likedComment): static
+    {
+        if (!$this->liked_comments->contains($likedComment)) {
+            $this->liked_comments->add($likedComment);
+            $likedComment->addCommentLike($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLikedComment(Comment $likedComment): static
+    {
+        if ($this->liked_comments->removeElement($likedComment)) {
+            $likedComment->removeCommentLike($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): static
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles->add($article);
+            $article->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): static
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getAuthor() === $this) {
+                $article->setAuthor(null);
             }
         }
 
