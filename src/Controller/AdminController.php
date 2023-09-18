@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,6 +62,23 @@ class AdminController extends AbstractController
 
         return $this->render('admin/new-article.html.twig', [
             'article_form' => $article_form->createView()
+        ]);
+    }
+
+    #[Route('/admin/articles', name: 'app_admin_articles')]
+    public function articles(): Response
+    {
+        return $this->render('admin/articles.html.twig', [
+        ]);
+    }
+
+    #[Route('/admin/utilisateurs', name: 'app_admin_users')]
+    public function users(EntityManagerInterface $entityManager): Response
+    {
+        $users = $entityManager->getRepository(User::class)->findAll();
+
+        return $this->render('admin/users.html.twig', [
+            'users' => $users
         ]);
     }
 }

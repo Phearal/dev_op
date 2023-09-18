@@ -4,7 +4,7 @@ main {
     justify-content: center;
     align-items: center;
 }
-#login-form {
+#regilog-form {
     width: 500px;
     background-color: var(--eerie-black);
     padding: 20px;
@@ -42,7 +42,7 @@ label {
 }
 
 @media (max-width: 550px) {
-    #login-form {
+    #regilog-form {
         width: 90%;
     }
 }

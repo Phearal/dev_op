@@ -51,6 +51,9 @@
 .form-confirm:hover {
     background-color: var(--silver);
 }
+input {
+    font-family: 'Poppins', sans-serif !important;
+}
 @media (max-width: 1250px){
     #article-form {
         width: 95%;
