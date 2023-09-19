@@ -70,6 +70,9 @@
     padding: 20px 0;
     border-bottom: 1px solid #5b5b5b;
 }
+.comment-text {
+    margin: 10px 0 0 0;
+}
 .comment:nth-child(1) {
     border-top: 1px solid #5b5b5b;
 }
