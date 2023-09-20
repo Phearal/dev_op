@@ -11,7 +11,7 @@
 	<main>
 		<article id="this-article-container">
 			<h1>{{ article.title }}</h1>
-			<p class="introduction">{{ article.introduction|raw }}</p>
+			<p class="introduction">{{ article.introduction|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
 			<ul class="taglist">
 				{% for tag in article.tags %}
 					<li class="tag">{{ tag.name }}</li>
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<img src="{{ asset('img/article/' ~ article.image) }}" alt="" class="article-img">
-			<p>{{ article.content|raw }}</p>
+			<p id="article-content">{{ article.content|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
 		</article>
 
 		<section id="other-articles">
