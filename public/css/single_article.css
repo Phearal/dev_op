@@ -13,11 +13,11 @@
 }
 #article-content span {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--white);
 }
-#article-content strong {
+#article-content strong, #article-content b {
     color: var(--white);
 }
 .taglist {
