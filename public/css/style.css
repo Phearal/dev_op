@@ -6,6 +6,8 @@
     --silver: #a7a7a7;
     --carrot-orange: #ed9624;
     --white: #ffffff;
+    --blue-icon: #0087db;
+    --green-icon: #00db3e;
 }
 ::selection {
     background-color: var(--carrot-orange);
@@ -27,7 +29,7 @@ h1, h2, h3, h4, h5, h6, .title {
     font-family: 'Grenze', serif;
     color: var(--white);
 }
-p, a, .text, label {
+p, a, .text, label, .pagination-info {
     font-family: 'Poppins', sans-serif;
     color: var(--silver);
 }

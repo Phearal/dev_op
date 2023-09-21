@@ -5,7 +5,6 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/table.css') }}">
 {% endblock %}
 {% block javascripts %}
 	<script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -38,9 +37,9 @@
 						{% endfor %}
 					</td>
 					<td>{{ user.createdAt ? user.createdAt|date('d/m/Y') : '' }}</td>
-					<td>
-						<a href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a>
-						<a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+					<td class="actions_data">
+						<a href="{{ path('app_user_show', {'id': user.id}) }}"><i class="bi bi-eye-fill see-data-icon"></i></a>
+						<a href="{{ path('app_user_edit', {'id': user.id}) }}"><i class="bi bi-pencil-fill edit-data-icon"></i></a>
 					</td>
 				</tr>
 			{% else %}
@@ -51,5 +50,5 @@
 		</tbody>
 	</table>
 </section>
-	<a href="{{ path('app_user_new') }}">Nouvel utilisateur</a>
+	<a href="{{ path('app_user_new') }}" class="new-data-btn">Nouvel utilisateur</a>
 {% endblock %}

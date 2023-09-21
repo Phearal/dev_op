@@ -3,14 +3,13 @@
 {% block title %}Edit User{% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/table.css') }}">
 {% endblock %}
 
 {% block body %}
 <section>
 <a href="{{ path('app_user_index') }}" id="admin_menu_link"><i class="bi bi-caret-left-fill"></i> Liste des utilisateurs</a>
 
-    <h1>Edit User</h1>
+    <h1>Modifier utilisateur</h1>
 
     {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 
