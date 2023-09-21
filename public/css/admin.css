@@ -1,4 +1,7 @@
 /* MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU - MENU */
+h1 {
+    margin: 50px 0;
+}
 #admin-menu {
     display: flex;
     flex-direction: column;
@@ -9,6 +12,16 @@
     padding: 20px;
     border-radius: 10px;
     gap: 20px 0;
+}
+#admin_menu_link {
+    align-self: flex-start;
+    transition: 0.2s;
+}
+#admin_menu_link i {
+    color: var(--carrot-orange);
+}
+#admin_menu_link:hover {
+    color: var(--white);
 }
 #admin-menu li {
     width: 100%;

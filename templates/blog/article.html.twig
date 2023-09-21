@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block body %}
-	<main>
 		<article id="this-article-container">
 			<h1>{{ article.title }}</h1>
 			<p class="introduction">{{ article.introduction|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
@@ -36,7 +35,9 @@
 		</article>
 
 		<section id="other-articles">
-			<h2>Autres articles :</h2>
+			<div class="responsive-h2">
+				<h2>Autres articles :</h2>
+			</div>
 			<div id="article-container">
 				{% for article in other_articles %}
 					{% include "_partials/_article.html.twig" %}
@@ -58,12 +59,13 @@
 			<button type="submit" class="btn btn-lg btn-primary form-confirm">Commenter</button>
 			{{ form_end(comment_form) }}
 
-			<h2>Commentaires ({{ article.comments|length }}) :</h2>
+			<div class="responsive-h2">
+				<h2>Commentaires ({{ article.comments|length }}) :</h2>
+			</div>
 			<ul id="comments-container">
 				{% for comment in article.comments %}
 					{% include "_partials/_comment.html.twig" %}
 				{% endfor %}
 			</ul>
 		</section>
-	</main>
 {% endblock %}

@@ -1,0 +1,4 @@
+tr, td {
+    background-color: var(--jet) !important;
+    color: var(--white) !important;
+}

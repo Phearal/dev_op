@@ -95,7 +95,7 @@ header {
 .article-card {
     background-color: var(--eerie-black);
     border: none;
-    width: 350px;
+    width: 350px !important;
     height: 600px;
 }
 .card-img-top {

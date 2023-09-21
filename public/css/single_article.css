@@ -1,3 +1,11 @@
+article, section {
+    width: 1200px !important;
+}
+@media (max-width: 1250px) {
+    article, section {
+        width: 90% !important;
+    }
+}
 #this-article-container {
     width: 1200px;
     display: flex;
@@ -49,6 +57,10 @@
     margin-top: 50px;
     padding-bottom: 50px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     border-bottom: 2px solid var(--silver);
 }
 #other-articles h2 {
@@ -70,9 +82,18 @@
 /* COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS */
 #comments {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#comments h2 {
+    align-self: flex-start;
 }
 #comments-container {
     padding: 0;
+    width: 100%;
+}
+#comments form div:nth-child(1) {
     width: 100%;
 }
 .comment {
@@ -82,8 +103,8 @@
 .comment-text {
     margin: 10px 0 0 0;
 }
-.comment:nth-child(1) {
-    border-top: 1px solid #5b5b5b;
+.responsive-h2:nth-child(2) {
+    border-bottom: 1px solid #5b5b5b;
 }
 .comment-like-modif {
     display: flex;
@@ -121,7 +142,12 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
     margin: 50px 0;
+    width: 100%;
+}
+.responsive-h2 {
+    width: 100%;
 }
 .comment-content {
     resize: none;
@@ -138,5 +164,13 @@
 }
 .form-confirm:hover {
     background-color: var(--silver);
+}
+@media (max-width: 1250px) {
+    #comments form div:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 /* COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS - COMMENTS */

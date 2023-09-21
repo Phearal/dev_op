@@ -13,12 +13,12 @@
 				<h3>{{ article.title }}</h3>
 			</a>
 			<div class="article-description-container">
-				<p class="article-description">{{ article.introduction|striptags('<br><p><h1><h2><h3><h4><h5><h6><strong><b><em><i>')|raw }}</p>
+				<p class="article-description">{{ article.introduction|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
 			</div>
 		</div>
 		<div class="article-reaction-container">
 			<span>
-				<i class="bi bi-hand-thumbs-up{% if app.user and app.user.getLikedArticles().contains(article) %}-fill liked-icon{% endif %}"></i>
+				<i class="bi bi-hand-thumbs-up{% if app.user and app.user.getLikedArticles().contains(article) %}-fill liked-icon{% endif %}" data-id="{{ article.id }}"></i>
 				<p>{{ article.likes|length }}</p>
 			</span>
 			<span>
