@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Tag{% endblock %}
+{% block title %}Modifier tag
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Tag</h1>
+	<section>
+		<a href="{{ path('app_tag_index') }}" id="admin_menu_link">
+        		<i class="bi bi-caret-left-fill"></i>
+			Retour aux tags</a>
 
-    {{ include('tag/_form.html.twig', {'button_label': 'Update'}) }}
+			<h1>Modifier tag</h1>
 
-    <a href="{{ path('app_tag_index') }}">back to list</a>
+			{{ include('tag/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('tag/_delete_form.html.twig') }}
-{% endblock %}
+			{{ include('tag/_delete_form.html.twig') }}
+		</section>
+	{% endblock %}

@@ -35,6 +35,7 @@ h1 {
 }
 #admin-menu a:hover, .new-data-btn:hover {
     background-color: var(--silver);
+    color: var(--white);
 }
 .new-data-btn {
     background-color: var(--eerie-black);
@@ -43,6 +44,15 @@ h1 {
     border-radius: 10px;
     color: var(--white);
     transition: 0.2s;
+}
+#delete-data-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: none;
+}
+.delete-data-btn i {
+    color: var(--white) !important;
 }
 
 @media (max-width: 550px) {
@@ -89,14 +99,33 @@ tr, td {
     justify-content: space-around;
     align-items: center;
 }
+.see-data-icon, .edit-data-icon, .delete-data-icon {
+    color: var(--silver);
+}
 .see-data-icon:hover {
     color: var(--blue-icon);
 }
 .edit-data-icon:hover {
     color: var(--green-icon);
 }
+.delete-data-icon:hover {
+    color: var(--red-icon);
+}
 section {
     width: 1200px !important;
+}
+.pagination .page-item a:hover {
+    background-color: var(--white);
+    color: var(--eerie-black);
+}
+.pagination .page-item a {
+    background-color: var(--jet);
+    color: var(--silver);
+}
+.pagination .active a {
+    background-color: var(--white);
+    color: var(--eerie-black);
+    border-color: var(--white);
 }
 @media (max-width: 1250px) {
     section {
