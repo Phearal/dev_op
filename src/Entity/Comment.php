@@ -37,6 +37,9 @@ class Comment
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'liked_comments')]
     private Collection $likes;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $confirmed = null;
+
     public function __construct()
     {
         $timezone = new DateTimeZone('Europe/Paris');
@@ -129,6 +132,18 @@ class Comment
     public function removeLike(User $like): static
     {
         $this->likes->removeElement($like);
+
+        return $this;
+    }
+
+    public function isConfirmed(): ?bool
+    {
+        return $this->confirmed;
+    }
+
+    public function setConfirmed(?bool $confirmed): static
+    {
+        $this->confirmed = $confirmed;
 
         return $this;
     }

@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-	<section>
+	<section class="mb-3">
 		<a href="{{ path('app_user_index') }}" id="admin_menu_link">
 			<i class="bi bi-caret-left-fill"></i>
 			Retour aux utilisateurs</a>
@@ -32,7 +32,7 @@
             'attr': {'class': 'form-control mt-2 mb-4'},
             label: 'Roles'
         }) }}
-		<button class="btn new-data-btn">{{ button_label|default('Confirmer') }}</button>
+		<button class="btn new-data-btn mb-3">{{ button_label|default('Confirmer') }}</button>
 		{{ form_end(form) }}
 	</section>
 

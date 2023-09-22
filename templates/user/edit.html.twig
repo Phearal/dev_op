@@ -32,9 +32,8 @@
             'attr': {'class': 'form-control mt-2 mb-4'},
             label: 'Roles'
         }) }}
-		<button class="btn new-data-btn">{{ button_label|default('Confirmer') }}</button>
-		{{ form_end(form) }}
 
-        {{ include('user/_delete_form.html.twig') }}
 	</section>
+	<button class="btn new-data-btn mb-3">{{ button_label|default('Confirmer') }}</button>
+	{{ form_end(form) }}
 {% endblock %}
