@@ -45,6 +45,7 @@ class Comment
         $timezone = new DateTimeZone('Europe/Paris');
         $this->createdAt = new \DateTimeImmutable('now', $timezone);
         $this->likes = new ArrayCollection();
+        $this->setConfirmed(0);
     }
 
     public function getId(): ?int

@@ -23,7 +23,7 @@
 			</span>
 			<span>
 				<i class="bi bi-chat-left-text"></i>
-				<p>{{ article.comments|length }}</p>
+				<p>{{ article.comments|filter(comment => comment.isConfirmed)|length }}</p>
 			</span>
 		</div>
 	</div>

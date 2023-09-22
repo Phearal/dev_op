@@ -21,6 +21,19 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+       /**
+    * @return Comment[] Returns an array of validated Comment objects
+    */
+    public function findValidatedComments()
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.confirmed = :confirmed')
+            ->setParameter('confirmed', true)
+            ->orderBy('c.createdAt', 'ASC') // Assurez-vous que le champ de date est correct
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Comment[] Returns an array of Comment objects
 //     */

@@ -26,7 +26,7 @@
 					</span>
 					<span>
 						<i class="bi bi-chat-left-text"></i>
-						<p>{{ article.comments|length }}</p>
+						<p>{{ article.comments|filter(comment => comment.isConfirmed)|length }}</p>
 					</span>
 				</div>
 			</div>
@@ -60,10 +60,10 @@
 			{{ form_end(comment_form) }}
 
 			<div class="responsive-h2">
-				<h2>Commentaires ({{ article.comments|length }}) :</h2>
+				<h2>Commentaires ({{ article.comments|filter(comment => comment.isConfirmed)|length }}) :</h2>
 			</div>
 			<ul id="comments-container">
-				{% for comment in article.comments %}
+				{% for comment in article.comments|filter(comment => comment.isConfirmed) %}
 					{% include "_partials/_comment.html.twig" %}
 				{% endfor %}
 			</ul>
