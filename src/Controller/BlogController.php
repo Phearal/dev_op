@@ -43,9 +43,6 @@ class BlogController extends AbstractController
     {
         $article_repository = $entityManager->getRepository(Article::class);
         $article = $article_repository->find($id);
-        $comment_repository = $entityManager->getRepository(Comment::class);
-        $comments = $comment_repository->findValidatedComments();
-        // dd($comments);
 
         $other_articles = [];
         $article_tags = $article->getTags();
@@ -76,8 +73,7 @@ class BlogController extends AbstractController
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'other_articles' => $other_articles,
-            'comment_form' => $comment_form->createView(),
-            'comments' => $comments
+            'comment_form' => $comment_form->createView()
         ]);
     }
 

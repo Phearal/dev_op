@@ -101,6 +101,7 @@ tr, td {
 }
 .see-data-icon, .edit-data-icon, .delete-data-icon {
     color: var(--silver);
+    cursor: pointer;
 }
 .see-data-icon:hover {
     color: var(--blue-icon);
