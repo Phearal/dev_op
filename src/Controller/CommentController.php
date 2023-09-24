@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/comment')]
 class CommentController extends AbstractController
 {
@@ -23,64 +24,25 @@ class CommentController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_comment_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $comment = new Comment();
-        $form = $this->createForm(Comment1Type::class, $comment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($comment);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('comment/new.html.twig', [
-            'comment' => $comment,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
-    public function show(Comment $comment): Response
-    {
-        return $this->render('comment/show.html.twig', [
-            'comment' => $comment,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_comment_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(Comment1Type::class, $comment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('comment/edit.html.twig', [
-            'comment' => $comment,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_comment_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($comment);
-            $entityManager->flush();
+            try {
+                $entityManager->remove($comment);
+                $entityManager->flush();
+                return new JsonResponse(['message' => "Le commentaire a été supprimé avec succès."], Response::HTTP_OK);
+            } catch (Exception $e) {
+                return new JsonResponse(['message' => "Une erreur s'est produite."], Response::HTTP_BAD_REQUEST);
+            }
+        } else {
+            return new JsonResponse(['message' => "Token invalide."], Response::HTTP_BAD_REQUEST);
         }
 
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/validate-comment/{id}', name: 'app_comment_validate', methods: ['POST'])]
+    #[Route('/validate/{id}', name: 'app_comment_validate', methods: ['POST'])]
     public function validate(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
         try {
