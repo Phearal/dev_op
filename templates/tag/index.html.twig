@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tag index
+{% block title %}Tags
 {% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/table.css') }}">
 {% endblock %}
 {% block javascripts %}
 	<script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -15,7 +14,7 @@
 {% block body %}
 	<section>
     <a href="{{ path('app_admin') }}" id="admin_menu_link"><i class="bi bi-caret-left-fill"></i> Retour au menu admin</a>
-		<h1>Tag index</h1>
+		<h1>Tags</h1>
 
 		<table data-toggle="table" data-pagination="true" data-search="true">
 			<thead>
