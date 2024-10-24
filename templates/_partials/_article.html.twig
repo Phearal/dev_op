@@ -13,7 +13,7 @@
 				<h3>{{ article.title }}</h3>
 			</a>
 			<div class="article-description-container">
-				<p class="article-description">{{ article.introduction|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
+				<p class="article-description">{{ article.introduction|sanitize_html }}</p>
 			</div>
 		</div>
 		<div class="article-reaction-container">

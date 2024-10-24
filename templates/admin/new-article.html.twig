@@ -10,9 +10,9 @@
 {% block javascripts %}
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 	<script>
-		$(document).ready(function () {$('.js-example-basic-multiple').select2({closeOnSelect: false});});
+		$(document).ready(function () {$('.js-example-basic-multiple').select2({closeOnSelect: false});
         // Initialisation de Quill pour l'éditeur de contenu
         var quill = new Quill('#editor', {
             theme: 'snow'
@@ -20,10 +20,11 @@
 
         // Lors de l'envoi du formulaire, on passe le contenu de l'éditeur dans le champ caché
         var form = document.querySelector('#article-form');
-        form.onsubmit = function() {
-            var contentInput = document.querySelector('input[name="article_form[content]"]');
-            contentInput.value = quill.root.innerHTML;
-        };
+		form.onsubmit = function() {
+			var contentInput = document.querySelector("input[id='article_content'");
+			contentInput.value = quill.root.innerHTML;
+		};
+		});
 	</script>
 {% endblock %}
 
