@@ -1,0 +1,48 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#regilog-form {
+    width: 500px;
+    background-color: var(--eerie-black);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    color: var(--white) !important;
+}
+label {
+    color: var(--silver) !important;
+}
+.form-confirm {
+    background-color: var(--jet);
+    border: none;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1rem;
+    align-self: center;
+    margin: 20px 0 10px 0;
+}
+.form-confirm:hover {
+    background-color: var(--silver);
+}
+#regilog {
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+#regilog a {
+    color: var(--carrot-orange);
+    transition: 0.2s;
+}
+#regilog a:hover {
+    color: var(--white);
+}
+
+@media (max-width: 550px) {
+    #regilog-form {
+        width: 90%;
+    }
+}

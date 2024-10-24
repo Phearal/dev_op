@@ -1,0 +1,54 @@
+<div id="kt_docs_toast_stack_container" class="toast-container position-fixed top-0 end-0 p-3 z-index-30">
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<!--begin::Toast-->
+			<div class="toast bg-{{ label }}" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-{{ label }} border-0">
+					{% if label == 'success' %}
+						<i class="ki-duotone ki-check-circle fs-1 me-2 text-white">
+							<i class="path1"></i>
+							<i class="path2"></i>
+						</i>
+						<strong class="me-auto text-white">Succès</strong>
+					{% elseif label == 'primary' %}
+						<i class="ki-duotone ki-information-5 fs-1 me-2 text-white">
+							<i class="path1"></i>
+							<i class="path2"></i>
+							<i class="path3"></i>
+						</i>
+						<strong class="me-auto text-white">Information</strong>
+					{% elseif label == 'danger' %}
+						<i class="ki-duotone ki-cross-circle fs-1 me-2 text-white">
+							<i class="path1"></i>
+							<i class="path2"></i>
+						</i>
+						<strong class="me-auto text-white">Erreur</strong>
+					{% elseif label == 'warning' %}
+						<i class="ki-duotone ki-information-5 fs-1 me-2 text-white">
+							<i class="path1"></i>
+							<i class="path2"></i>
+							<i class="path3"></i>
+						</i>
+						<strong class="me-auto text-white">Alerte</strong>
+					{% else %}
+						<i class="ki-duotone ki-dots-circle fs-1 me-2 text-white">
+							<i class="path1"></i>
+							<i class="path2"></i>
+							<i class="path3"></i>
+							<i class="path4"></i>
+						</i>
+						<strong class="me-auto text-white">Notification</strong>
+					{% endif %}
+					<i class="ki-duotone ki-cross fs-1 text-white" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
+						<i class="path1"></i>
+						<i class="path2"></i>
+					</i>
+				</button>
+			</div>
+			<div class="toast-body text-white fs-6">
+				{{ message }}
+			</div>
+		</div>
+		<!--end::Toast-->
+	{% endfor %}
+{% endfor %}</div>

@@ -1,0 +1,9 @@
+
+
+{{ form_start(form) }}
+    	{{ form_row(form.name, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Nom du tag'
+        }) }}
+    <button class="btn new-data-btn">{{ button_label|default('Confirmer') }}</button>
+{{ form_end(form) }}

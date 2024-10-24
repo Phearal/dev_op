@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/regilog_form.css') }}">
+{% endblock %}
+
+{% block body %}
+	{{ form_errors(registrationForm) }}
+	{{ form_start(registrationForm, {
+            'attr': {'id': 'regilog-form'}
+        }) }}
+	<h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+	{{ form_row(registrationForm.email, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Email'
+        }) }}
+	{{ form_row(registrationForm.nickname, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Pseudo'
+        }) }}
+	{{ form_row(registrationForm.plainPassword, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Mot de passe'
+        }) }}
+
+	<button type="submit" class="btn btn-lg btn-primary form-confirm">Confirmer</button>
+	{{ form_end(registrationForm) }}
+    <p id="regilog">Déjà un compte ? <a href="{{ path('app_login') }}">Se connecter</a></p>
+{% endblock %}

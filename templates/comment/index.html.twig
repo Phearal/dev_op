@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comment index{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block javascripts %}
+	<script defer src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+    <script defer src="{{ asset('js/comments.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<section>
+<a href="{{ path('app_admin') }}" id="admin_menu_link"><i class="bi bi-caret-left-fill"></i> Retour au menu admin</a>
+    <h1>Commentaires</h1>
+
+    <table data-toggle="table" data-pagination="true" data-search="true">
+        <thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Posté le</th>
+                <th>Contenu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments|filter(comment => not comment.isConfirmed) %}
+            <tr>
+                <td>{{ comment.user.nickname }}</td>
+                <td>{{ comment.createdAt ? comment.createdAt|date("d/m/Y à H:i") : '' }}</td>
+                <td>{{ comment.content }}</td>
+                <td class="actions_data">
+                	<i class="bi bi-check-circle-fill edit-data-icon validate-comment" data-comment-id="{{ comment.id }}"></i>
+                    <i class="bi bi-trash-fill delete-data-icon delete-comment" data-comment-id="{{ comment.id }}" data-csrf-token="{{ csrf_token('delete' ~ comment.id) }}"></i>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}

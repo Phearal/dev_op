@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    <main>
+        <div id="article-container">
+            {% for article in articles %}
+                {% include "_partials/_article.html.twig" %}
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

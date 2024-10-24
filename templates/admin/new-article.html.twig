@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer article
+{% endblock %}
+{% block stylesheets %}
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+	<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+	<script>
+		$(document).ready(function () {$('.js-example-basic-multiple').select2({closeOnSelect: false});});
+        // Initialisation de Quill pour l'éditeur de contenu
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+        // Lors de l'envoi du formulaire, on passe le contenu de l'éditeur dans le champ caché
+        var form = document.querySelector('#article-form');
+        form.onsubmit = function() {
+            var contentInput = document.querySelector('input[name="article_form[content]"]');
+            contentInput.value = quill.root.innerHTML;
+        };
+	</script>
+{% endblock %}
+
+{% block body %}
+	{{ form_errors(article_form) }}
+	{{ form_start(article_form, {
+            'attr': {'id': 'article-form'}
+        }) }}
+	<h1>Créer un article</h1>
+	{{ form_row(article_form.title, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Titre'
+        }) }}
+	{{ form_row(article_form.introduction, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Introduction'
+        }) }}
+	{{ form_row(article_form.image, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Image'
+        }) }}
+
+		    <!-- Div pour l'éditeur Quill -->
+    <div id="editor" class="form-control mt-2 mb-4" style="height: 300px;"></div>
+
+    <!-- Champ caché pour stocker le contenu HTML -->
+    {{ form_widget(article_form.content) }}
+	{# {{ form_row(article_form.content, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Contenu'
+        }) }} #}
+	{{ form_row(article_form.tags, {
+            'attr': {'class': 'form-select js-example-basic-multiple'},
+            label: 'Tags'
+        }) }}
+
+	{{ form_widget(article_form._token) }}
+
+	<button type="submit" class="btn btn-lg btn-primary form-confirm">Confirmer</button>
+	{{ form_end(article_form) }}
+
+{% endblock %}

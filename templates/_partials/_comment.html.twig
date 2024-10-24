@@ -1,0 +1,22 @@
+<li class="comment">
+	<div class="d-flex justify-content-between">
+		<h4 class="m-0">{{ comment.user.nickname }}</h4>
+		<p class="article-date">{{ comment.createdAt|date("d/m/Y à H:i") }}</p>
+	</div>
+	<p class="comment-text">{{ comment.content }}</p>
+	<div class="comment-like-modif">
+		<div class="comment-likes-container">
+			<span>
+				<i class="bi bi-hand-thumbs-up"></i>
+				<p>{{ comment.likes|length }}</p>
+			</span>
+			{# <span>
+				<i class="bi bi-hand-thumbs-down"></i>
+				<p>{{ comment.dislikes }}</p>
+			</span> #}
+		</div>
+		{% if comment.modified == true %}
+			<p class="modified">Modifié</p>
+		{% endif %}
+	</div>
+</li>

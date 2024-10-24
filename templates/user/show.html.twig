@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section class="mb-3">
+		<a href="{{ path('app_user_index') }}" id="admin_menu_link">
+			<i class="bi bi-caret-left-fill"></i>
+			Retour aux utilisateurs</a>
+		<h1>{{ user.nickname }}</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Pseudo</th>
+					<td>{{ user.nickname }}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{ user.email }}</td>
+				</tr>
+				<tr>
+					<th>Roles</th>
+					<td>
+						{% for role in user.roles %}
+							{{ role }}
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<th>Membre depuis</th>
+					<td>{{ user.createdAt ? user.createdAt|date('d/m/Y') : '' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="new-data-btn mb-5">Modifier</a>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block javascripts %}
+	<script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script defer src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+{% endblock %}
+
+{% block body %}
+	<section class="mb-3">
+		<a href="{{ path('app_admin') }}" id="admin_menu_link">
+			<i class="bi bi-caret-left-fill"></i>
+			Retour au menu admin</a>
+		<h1>Utilisateurs</h1>
+
+		<table data-toggle="table" data-pagination="true" data-search="true">
+			<thead>
+				<tr>
+					<th>Pseudonyme</th>
+					<th>Email</th>
+					<th>Roles</th>
+					<th>Membre depuis le</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.nickname }}</td>
+						<td>{{ user.email }}</td>
+						<td>
+							{% for role in user.roles %}
+								{{ role }}
+								{% if not loop.last %},
+								{% endif %}
+							{% endfor %}
+						</td>
+						<td>{{ user.createdAt ? user.createdAt|date('d/m/Y') : '' }}</td>
+						<td class="actions_data">
+							<a href="{{ path('app_user_show', {'id': user.id}) }}">
+								<i class="bi bi-eye-fill see-data-icon"></i>
+							</a>
+							<a href="{{ path('app_user_edit', {'id': user.id}) }}">
+								<i class="bi bi-pencil-fill edit-data-icon"></i>
+							</a>
+							{{ include('user/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">Aucun utilisateur trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
+	<a href="{{ path('app_user_new') }}" class="new-data-btn mb-5">Nouvel utilisateur</a>
+{% endblock %}

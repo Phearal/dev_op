@@ -1,0 +1,30 @@
+<article class="card article-card">
+	<a href="{{ path('app_article', {id: article.id}) }}"><img src="{{ asset('img/article/' ~ article.image) }}" class="card-img-top" alt=""></a>
+	<div class="card-body article-body">
+		<div>
+			<p class="article-date">Publié le :
+				{{ article.createdAt|date("d/m/Y") }}</p>
+			<ul class="taglist">
+				{% for tag in article.tags %}
+					<li class="tag">{{ tag.name }}</li>
+				{% endfor %}
+			</ul>
+			<a href="{{ path('app_article', {id: article.id}) }}">
+				<h3>{{ article.title }}</h3>
+			</a>
+			<div class="article-description-container">
+				<p class="article-description">{{ article.introduction|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
+			</div>
+		</div>
+		<div class="article-reaction-container">
+			<span>
+				<i class="bi bi-hand-thumbs-up{% if app.user and app.user.getLikedArticles().contains(article) %}-fill liked-icon{% endif %}" data-id="{{ article.id }}"></i>
+				<p>{{ article.likes|length }}</p>
+			</span>
+			<span>
+				<i class="bi bi-chat-left-text"></i>
+				<p>{{ article.comments|filter(comment => comment.isConfirmed)|length }}</p>
+			</span>
+		</div>
+	</div>
+</article>

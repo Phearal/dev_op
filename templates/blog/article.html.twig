@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ article.title }}
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/single_article.css') }}">
+{% endblock %}
+
+{% block body %}
+		<article id="this-article-container">
+			<h1>{{ article.title }}</h1>
+			<p class="introduction">{{ article.introduction|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
+			<ul class="taglist">
+				{% for tag in article.tags %}
+					<li class="tag">{{ tag.name }}</li>
+				{% endfor %}
+			</ul>
+			<div id="date-reaction-container">
+				<p class="article-date">Publié le :
+					{{ article.createdAt|date("d/m/Y") }}</p>
+				<div class="article-reaction-container">
+					<span>
+						<i class="bi bi-hand-thumbs-up"></i>
+						<p>{{ article.likes|length }}</p>
+					</span>
+					<span>
+						<i class="bi bi-chat-left-text"></i>
+						<p>{{ article.comments|filter(comment => comment.isConfirmed)|length }}</p>
+					</span>
+				</div>
+			</div>
+			<img src="{{ asset('img/article/' ~ article.image) }}" alt="" class="article-img">
+			<p id="article-content">{{ article.content|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
+		</article>
+
+		<section id="other-articles">
+			<div class="responsive-h2">
+				<h2>Autres articles :</h2>
+			</div>
+			<div id="article-container">
+				{% for article in other_articles %}
+					{% include "_partials/_article.html.twig" %}
+				{% endfor %}
+			</div>
+		</section>
+
+		<section id="comments">
+			{{ form_start(comment_form) }}
+			{{ form_errors(comment_form) }}
+			{{ form_row(comment_form.content, {
+				'attr': {
+					'placeholder': 'Écrire un commentaire',
+					'class': 'form-control mb-3 comment-content'
+					},
+				label: false
+			}) }}
+			{{ form_widget(comment_form._token) }}
+			<button type="submit" class="btn btn-lg btn-primary form-confirm">Commenter</button>
+			{{ form_end(comment_form) }}
+
+			<div class="responsive-h2">
+				<h2>Commentaires ({{ article.comments|filter(comment => comment.isConfirmed)|length }}) :</h2>
+			</div>
+			<ul id="comments-container">
+				{% for comment in article.comments|filter(comment => comment.isConfirmed) %}
+					{% include "_partials/_comment.html.twig" %}
+				{% endfor %}
+			</ul>
+		</section>
+{% endblock %}
