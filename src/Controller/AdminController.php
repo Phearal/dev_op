@@ -49,7 +49,7 @@ class AdminController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    return new JsonResponse(['error' => 'Erreur lors de l\'upload de l\'image.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+                    return new JsonResponse(["error" => "Something went wrong during the image upload."], Response::HTTP_INTERNAL_SERVER_ERROR);
                 }
 
                 // updates the 'brochureFilename' property to store the PDF file name

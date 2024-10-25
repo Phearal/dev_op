@@ -86,6 +86,7 @@ input {
 .ql-editor * {
     color: #000;
 }
+/* Toolbar customization */
 *[role="toolbar"] {
     border-radius: 5px;
 }

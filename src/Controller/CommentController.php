@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Exception;
 use App\Entity\Comment;
 use App\Form\Comment1Type;
 use App\Repository\CommentRepository;
@@ -10,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[IsGranted('ROLE_ADMIN')]
@@ -31,12 +33,12 @@ class CommentController extends AbstractController
             try {
                 $entityManager->remove($comment);
                 $entityManager->flush();
-                return new JsonResponse(['message' => "Le commentaire a été supprimé avec succès."], Response::HTTP_OK);
+                return new JsonResponse(['message' => "Comment was deleted successfully."], Response::HTTP_OK);
             } catch (Exception $e) {
-                return new JsonResponse(['message' => "Une erreur s'est produite."], Response::HTTP_BAD_REQUEST);
+                return new JsonResponse(['message' => "Something went wrong."], Response::HTTP_BAD_REQUEST);
             }
         } else {
-            return new JsonResponse(['message' => "Token invalide."], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['message' => "Invalid token."], Response::HTTP_BAD_REQUEST);
         }
 
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
@@ -48,9 +50,9 @@ class CommentController extends AbstractController
         try {
             $comment->setConfirmed(true);
             $entityManager->flush();
-            return new JsonResponse(['message' => "Le commentaire a été validé avec succès."], Response::HTTP_OK);
+            return new JsonResponse(['message' => "Comment was validated successfully."], Response::HTTP_OK);
         } catch (Exception $e) {
-            return new JsonResponse(['message' => "Une erreur s'est produite."], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['message' => "Something went wrong."], Response::HTTP_BAD_REQUEST);
         }
     }
 }

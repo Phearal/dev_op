@@ -57,7 +57,7 @@ class AppFixtures extends Fixture
         }
 
         // TAGS
-        $tags = ['Php', 'Javascript', 'Python', 'Symfony', 'Django', 'React', 'News', 'Tutorial', 'AI'];
+        $tags = ['Php', 'Javascript', 'Python', 'Symfony', 'Django', 'React', 'News', 'Tutorial', 'AI', 'Tutorial'];
         $tag_objects = [];
         foreach ($tags as $tag) {
             $new_tag = new Tag();
@@ -109,6 +109,50 @@ class AppFixtures extends Fixture
                 "introduction" => "Quels sont les langages de programmation les plus populaires et ceux que vous devez maîtriser si vous souhaitez vous reconvertir dans le développement informatique ?  ",
                 "image" => "Programming-Language-Popularity.jpg",
                 "content" => "Alors que la digitalisation touche tous les domaines, le métier de développeur web est actuellement très recherché par les entreprises, qui ont besoin d’être accompagnées dans leurs projets. « Son rôle consiste à développer des sites, des boutiques en ligne, des applications mobiles, ou encore des applications métiers comme des logiciels SaaS (Software As A Service) », explique Christian Meneux, formateur en développement web et web mobile chez Nextformation, l’école de la reconversion professionnelle dans les métiers de l’informatique.<br><br><br><span>Les principaux langages de programmation à connaître en 2022</span><br><br>Quel que soit son statut (salarié, freelance), la taille et le type de structure pour laquelle il travaille, ou son secteur d’activité, le développeur web doit maîtriser les langages de programmation pour concevoir des applications web et mobiles.<br><br><b>Python, le langage le plus recherché sur le web</b><br><br>D’après l’index TIOBE qui répertorie les langages de programmation les plus recherchés en ligne, Python, qui a déjà été désigné langage de l’année 2021, figure en tête du classement d’août 2022, devant C, Java et C++. À eux 4, ils représentent plus de 50 % des recherches Internet du mois. S’il est bien parti pour être titré cette année encore, Python est un langage facile à apprendre. Il est accessible aux développeurs même débutants, et permet aux plus expérimentés de coder rapidement, afin de créer des sites, développer des logiciels ou encore d’automatiser des scripts. Il est mis à jour régulièrement et bénéficie d’une communauté très active.<br><br><b>L’importance de maîtriser JavaScript, PHP, React ou encore Symfony</b><br><br>Pour Christian Meneux, en dehors de HTML et de CSS, les principaux langages à maîtriser en 2022 sont JavaScript et les frameworks associés, tels que React (la bibliothèque JavaScript open source développée par Facebook, qui permet de construire des interfaces utilisateurs pour des applications comportant une seule page) ou React Native, mais aussi NodeJs et PHP. « Les développeurs reçoivent de nombreuses demandes pour du PHP, et des projets en JavaScript de la part des startups. » Un constat partagé par Jérôme Bastaraud-Sopha, développeur web full stack freelance spécialisé en React et Symfony, qui a suivi le cursus de Nextformation : « j’utilise généralement le framework PHP Symfony pour réaliser la partie back-end des projets que je développe, et React pour le front-end ». À noter que WordPress, le CMS utilisé par 43 % des sites dans le monde, est écrit majoritairement en PHP.<br><br><b>Les langages en progression et ceux en déclin</b><br><br>Si JavaScript reste le langage de programmation le plus couramment utilisé par les développeurs pour la 10e année consécutive, selon l’étude menée par Stack Overflow, les développeurs doivent rester en veille constante pour se tenir au courant de leur évolution, pour connaître ceux qui sont en progression et ceux sur le déclin. « Certains langages comme Java Android ou Objective-C pour les applications d’Apple sont peu à peu remplacés par Fushia et Swift. On remarque aussi que la version open source du framework de Microsoft ASP.NET est actuellement privilégiée », ajoute le formateur.<br><br><br><span>Les avantages de se reconvertir en tant que développeur web</span><br><br>La profession de développeur web, qui bénéficie d’une insertion rapide sur le marché du travail, offre de belles opportunités à toutes celles et ceux qui envisagent de se lancer dans un projet de reconversion professionnelle. « C’est un métier passionnant qui évolue rapidement. Il permet d’obtenir un salaire attractif et de la flexibilité sur certains postes avec le full remote. Vous intervenez sur des sujets variés selon le type d’organisation qui fait appel à vous ou pour lequel vous travaillez. »<br><br>Hors freelance, la rémunération des développeurs s’élève à 32 100 € bruts annuels de 0 à 2 ans d’expérience, pour atteindre plus de 50 800 € pour les profils seniors (plus de 10 ans d’expérience), selon l’Association Française des Utilisateurs de PHP (AFUP). Vous pouvez aussi faire le choix de devenir indépendant et de facturer vos projets à vos clients selon un tarif journalier. D’après l’étude de Hays, le taux journalier moyen pour un développeur web junior (0-3 ans d’expérience) est de 450 €. Comptez jusqu’à 650 € pour un développeur senior (plus de 8 ans d’expérience).<br><br>Parmi les autres avantages de se reconvertir en tant que développeur web : le secteur étant en perpétuelle évolution, vous apprendrez tout au long de votre carrière professionnelle. Et vous avez également la possibilité de vous diriger ensuite vers des postes à plus forte responsabilité, comme lead développeur, ou vous spécialiser sur une technologie.<br><br><br><span>Une formation professionnalisante pour répondre aux besoins des entreprises</span><br><br>Nextformation propose la formation développeur web pour apprendre les fondamentaux du codage informatique, la programmation, le front-end ainsi que le back-end. Elle s’adresse aux personnes en reconversion, mais aussi à celles et ceux souhaitant monter en compétences dans ce domaine. « Notre programme se distingue par la variété des langages abordés, des mises en situation à travers la réalisation d’un projet professionnel qui reprend les étapes de production d’une application web (rédaction du cahier des charges, modélisation de base de données, etc.) et qui est calquée sur la réalité du terrain », souligne Christian Meneux. Il vous permet d’obtenir le titre RNCP « développeur web et web mobile » de niveau 5 (bac+2).<br><br>Le cursus de Nextformation est enseigné par des formateurs professionnels experts en développement informatique. « On a la chance en tant qu’apprenant d’être entouré par des formateurs qualifiés, qui ont une envie de transmettre leurs expériences et leurs connaissances. Je suis resté en contact avec certains d’entre eux plusieurs mois après l’obtention de mon titre, ils répondent toujours présents », confie Jérôme Bastaraud-Sopha. À l’issue des 6 mois de cours, vous réalisez un stage de 2 mois en entreprise pour mettre en pratique vos connaissances et renforcer ainsi votre employabilité. La formation est éligible aux différents dispositifs de financement pour vous aider à réaliser votre projet de reconversion : CPF, CPF de transition professionnelle, plan de développement des compétences, aide individuelle à la formation…"
+            ],
+            [
+                "title" => "How to Create Fixtures for Testing in Symfony",
+                "introduction" => "Fixtures are essential for setting up test data and ensuring consistent test environments. In this article, we’ll explore how to use Symfony’s DoctrineFixturesBundle to create test data and provide examples to get you started.",
+                "image" => "Programming-Language-Popularity.jpg",
+                "content" => "  <h2>What Are Fixtures in Symfony?</h2>
+  <p><br></p>
+  <p><span>Fixtures in Symfony allow you to create initial data for your application. This is especially helpful for testing and development environments, where you need consistent data to verify the behavior of your code. Using Symfony’s DoctrineFixturesBundle, you can define data to load automatically into your database.</span></p>
+  <p><br></p>
+
+  <h2>Setting Up DoctrineFixturesBundle</h2>
+  <p><br></p>
+  <p><span>To start using fixtures in Symfony, first install the </span><code>doctrine/doctrine-fixtures-bundle</code><span>. This bundle provides commands to manage fixtures in your database.</span></p>
+  <p><br></p>
+  <ol>
+    <li><span>Run </span><code>composer require --dev doctrine/doctrine-fixtures-bundle</code><span> to add the bundle to your project.</span></li>
+    <li><span>Enable the bundle in your Symfony configuration if it’s not automatically enabled.</span></li>
+  </ol>
+  <p><br></p>
+
+  <h2>Creating Your First Fixture Class</h2>
+  <p><br></p>
+  <p><span>To create a fixture, create a new PHP class that implements </span><code>FixtureInterface</code><span>. Here’s a basic example that creates a single user entry:</span></p>
+  <pre><code>use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+use App\Entity\User;
+
+class UserFixture extends Fixture {
+  public function load(ObjectManager \$manager) {
+    \$user = new User();
+    \$user->setUsername('testuser');
+    \$user->setEmail('testuser@example.com');
+    \$user->setPassword('password'); // make sure to hash this in production
+    \$manager->persist(\$user);
+    \$manager->flush();
+  }
+}</code></pre>
+  <p><br></p>
+
+  <h2>Running Fixtures</h2>
+  <p><br></p>
+  <p><span>With your fixture class in place, you can load it by running the following command:</span></p>
+  <pre><code>php bin/console doctrine:fixtures:load</code></pre>
+  <p><span>This will populate your database with the defined data. Use fixtures strategically to test your application's core features!</span></p>"
             ],
         ];
 
