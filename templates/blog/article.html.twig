@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<img src="{{ asset('img/article/' ~ article.image) }}" alt="" class="article-img">
-			<p id="article-content">{{ article.content|striptags('<br><p><span><strong><b><em><i>')|raw }}</p>
+			<div id="article-content">{{ article.content|sanitize_html }}</div>
 		</article>
 
 		<section id="other-articles">

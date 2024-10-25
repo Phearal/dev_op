@@ -82,6 +82,31 @@ h1 {
 input {
     font-family: 'Poppins', sans-serif !important;
 }
+/* Black text for paragraph in form */
+.ql-editor * {
+    color: #000;
+}
+*[role="toolbar"] {
+    border-radius: 5px;
+}
+.ql-snow .ql-stroke {
+    stroke: var(--silver) !important;
+}
+.ql-snow .ql-fill {
+    fill: var(--silver) !important;
+}
+.ql-snow svg:hover .ql-stroke, .ql-snow .ql-picker.ql-header:hover .ql-picker-label .ql-stroke {
+    stroke: var(--carrot-orange) !important;
+}
+.ql-snow svg:hover .ql-fill {
+    fill: var(--carrot-orange) !important;
+}
+.ql-snow .ql-picker, .ql-active::before, .ql-selected::before {
+    color: var(--silver) !important;
+}
+.ql-snow .ql-picker.ql-header:hover .ql-picker-label::before, .ql-picker-item:hover::before {
+    color: var(--carrot-orange);
+}
 @media (max-width: 1250px){
     #article-form {
         width: 95%;

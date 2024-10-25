@@ -57,7 +57,7 @@ class AppFixtures extends Fixture
         }
 
         // TAGS
-        $tags = ['Php', 'Javascript', 'Python', 'Symfony', 'Django', 'React', 'Actualité', 'Tutoriel', 'IA', 'Gestion de projet', 'Formation'];
+        $tags = ['Php', 'Javascript', 'Python', 'Symfony', 'Django', 'React', 'News', 'Tutorial', 'AI'];
         $tag_objects = [];
         foreach ($tags as $tag) {
             $new_tag = new Tag();

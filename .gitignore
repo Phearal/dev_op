@@ -20,3 +20,8 @@
 ###< symfony/phpunit-bridge ###
 
 # /public/img/article/*
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
