@@ -19,14 +19,20 @@ article, section {
 .introduction {
     margin: 30px 0;
 }
+#article-content {
+    width: 100%;
+}
 #article-content pre {
     background-color: var(--eerie-black);
     width: 100%;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
 #article-content code {
     color: var(--code-color);
+}
+#article-content ol, #article-content ul {
+    list-style: unset;
 }
 .taglist {
     margin: unset;
