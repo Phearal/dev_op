@@ -2,7 +2,7 @@
 	<a href="{{ path('app_article', {id: article.id}) }}"><img src="{{ asset('img/article/' ~ article.image) }}" class="card-img-top" alt=""></a>
 	<div class="card-body article-body">
 		<div>
-			<p class="article-date">Publié le :
+			<p class="article-date">Published on :
 				{{ article.createdAt|date("d/m/Y") }}</p>
 			<ul class="taglist">
 				{% for tag in article.tags %}

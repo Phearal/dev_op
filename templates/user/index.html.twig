@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateurs
+{% block title %}Users
 {% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
@@ -15,16 +15,16 @@
 	<section class="mb-3">
 		<a href="{{ path('app_admin') }}" id="admin_menu_link">
 			<i class="bi bi-caret-left-fill"></i>
-			Retour au menu admin</a>
-		<h1>Utilisateurs</h1>
+			Back to admin menu</a>
+		<h1>Users</h1>
 
 		<table data-toggle="table" data-pagination="true" data-search="true">
 			<thead>
 				<tr>
-					<th>Pseudonyme</th>
+					<th>Nickname</th>
 					<th>Email</th>
 					<th>Roles</th>
-					<th>Membre depuis le</th>
+					<th>Member since</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -53,11 +53,11 @@
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="7">Aucun utilisateur trouvé</td>
+						<td colspan="7">No user found</td>
 					</tr>
 				{% endfor %}
 			</tbody>
 		</table>
 	</section>
-	<a href="{{ path('app_user_new') }}" class="new-data-btn mb-5">Nouvel utilisateur</a>
+	<a href="{{ path('app_user_new') }}" class="new-data-btn mb-5">New utilisateur</a>
 {% endblock %}

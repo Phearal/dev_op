@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau tag
+{% block title %}New tag
 {% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -10,8 +10,8 @@
 	<section>
 		<a href="{{ path('app_tag_index') }}" id="admin_menu_link">
 			<i class="bi bi-caret-left-fill"></i>
-			Retour aux tags</a>
-		<h1>Nouveau tag</h1>
+			Back to tag list</a>
+		<h1>New tag</h1>
 
 		{{ include('tag/_form.html.twig') }}
 	</section>

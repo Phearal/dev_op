@@ -10,15 +10,15 @@
 	<section>
 		<a href="{{ path('app_user_index') }}" id="admin_menu_link">
 			<i class="bi bi-caret-left-fill"></i>
-			Retour aux utilisateurs</a>
-		<h1>Modifier utilisateur</h1>
+			Back to user list</a>
+		<h1>Edit utilisateur</h1>
 
 		{# {{ include('user/_form.html.twig') }} #}
 
 		{{ form_start(form) }}
 		{{ form_row(form.nickname, {
             'attr': {'class': 'form-control mt-2 mb-4'},
-            label: 'Pseudo'
+            label: 'Nickname'
         }) }}
 		{{ form_row(form.email, {
             'attr': {'class': 'form-control mt-2 mb-4'},
@@ -26,7 +26,7 @@
         }) }}
 		{{ form_row(form.password, {
             'attr': {'class': 'form-control mt-2 mb-4'},
-            label: 'Mot de passe'
+            label: 'Password'
         }) }}
 		{{ form_row(form.roles, {
             'attr': {'class': 'form-control mt-2 mb-4'},
@@ -34,6 +34,6 @@
         }) }}
 
 	</section>
-	<button class="btn new-data-btn mb-5">{{ button_label|default('Confirmer') }}</button>
+	<button class="btn new-data-btn mb-5">{{ button_label|default('Confirm') }}</button>
 	{{ form_end(form) }}
 {% endblock %}

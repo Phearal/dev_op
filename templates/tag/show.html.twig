@@ -9,7 +9,7 @@
 <section>
 		<a href="{{ path('app_tag_index') }}" id="admin_menu_link">
 			<i class="bi bi-caret-left-fill"></i>
-			Retour aux tags</a>
+			Back to tag list</a>
     <h1>Tag</h1>
 
     <table class="table">
@@ -26,7 +26,7 @@
     </table>
 
 
-    <a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="btn new-data-btn">Modifier</a>
+    <a href="{{ path('app_tag_edit', {'id': tag.id}) }}" class="btn new-data-btn">Edit</a>
 
     </section>
 {% endblock %}

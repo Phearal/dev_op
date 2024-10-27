@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Menu admin
+{% block title %}Admin menu
 {% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -9,7 +9,7 @@
 {% block body %}
 	<ul class="nav flex-column" id="admin-menu">
 		<li class="nav-item">
-			<a class="nav-link" href="{{ path('app_new_article') }}">Créer un article</a>
+			<a class="nav-link" href="{{ path('app_new_article') }}">Create an article</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="{{ path('app_admin_articles') }}">Articles</a>
@@ -18,10 +18,10 @@
 			<a class="nav-link" href="{{ path('app_tag_index') }}">Tags</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="{{ path('app_comment_index') }}">Commentaires</a>
+			<a class="nav-link" href="{{ path('app_comment_index') }}">Comments</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="{{ path('app_user_index') }}">Utilisateurs</a>
+			<a class="nav-link" href="{{ path('app_user_index') }}">Users</a>
 		</li>
 	</ul>
 {% endblock %}
