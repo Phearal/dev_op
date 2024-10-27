@@ -30,9 +30,19 @@ article, section {
 }
 #article-content code {
     color: var(--code-color);
+    background-color: var(--eerie-black);
+    padding: 2px 5px;
+    border-radius: 5px;
 }
-#article-content ol, #article-content ul {
-    list-style: unset;
+#article-content pre code {
+    padding: 0;
+    border-radius: unset;
+}
+#article-content ol {
+    list-style-type: decimal !important;
+}
+#article-content li {
+    color: var(--silver);
 }
 .taglist {
     margin: unset;

@@ -154,6 +154,20 @@ class Article
         return $this;
     }
 
+    public function setTags(Collection $tags): static
+    {
+        // Remove article's tags
+        foreach ($this->tags as $tag) {
+            $tag->removeArticle($this);
+        }
+        $this->tags = $tags;
+        foreach ($tags as $tag) {
+            $tag->addArticle($this);
+        }
+    
+        return $this;
+    }
+
     public function removeTag(Tag $tag): static
     {
         if ($this->tags->removeElement($tag)) {
