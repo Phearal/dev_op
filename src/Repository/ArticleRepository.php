@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Article;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Types\UuidType;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -19,6 +21,33 @@ class ArticleRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Article::class);
+    }
+
+    public function findByMostLiked()
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.likes', 'l')
+            ->groupBy('a.id')
+            ->orderBy('COUNT(l)', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    // Finds the articles liked by the logged in user from most newest to oldest
+    public function findByUserLikes(User $user)
+    {
+        return $this->createQueryBuilder('a')
+            ->join('a.likes', 'l')
+            ->where('l.id = :userId')
+            ->setParameter('userId', $user->getId(), UuidType::NAME)
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByMostRecent()
+    {
+        return $this->findBy([], ['createdAt' => 'DESC']);
     }
 
 //    /**

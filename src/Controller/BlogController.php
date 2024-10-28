@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\ArticleType;
 use App\Form\CommentType;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,17 +35,24 @@ class BlogController extends AbstractController
     }
     
     #[Route('/blog/{tri}', name: 'app_blog')]
-    public function articles_ordered(EntityManagerInterface $entityManager, string $tri = "derniers-articles"): Response
+    public function articles_ordered(ArticleRepository $articleRepository, string $tri = "latest-articles"): Response
     {
+        $user = $this->getUser();
+
         switch ($tri) {
             case "top-articles":
-                $articles = $entityManager->getRepository(Article::class)->findBy([], ['createdAt' => 'ASC']);
+                $articles = $articleRepository->findByMostLiked();
                 break;
-            case "derniers-articles":
-                $articles = $entityManager->getRepository(Article::class)->findBy([], ['createdAt' => 'DESC']);
+            case "my-liked-articles":
+                if ($user) {
+                    $articles = $articleRepository->findByUserLikes($user);
+                } else {
+                    $articles = [];
+                }
                 break;
+            case "latest-articles":
             default:
-                $articles = $entityManager->getRepository(Article::class)->findBy([], ['createdAt' => 'DESC']);
+                $articles = $articleRepository->findByMostRecent();
         }
         
         return $this->render('blog/blog.html.twig', [

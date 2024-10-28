@@ -51,7 +51,7 @@
 			{{ form_errors(comment_form) }}
 			{{ form_row(comment_form.content, {
 				'attr': {
-					'placeholder': 'Écrire un commentaire',
+					'placeholder': 'Write a comment',
 					'class': 'form-control mb-3 comment-content'
 					},
 				label: false
@@ -61,7 +61,7 @@
 			{{ form_end(comment_form) }}
 
 			<div class="responsive-h2">
-				<h2>Commentaires ({{ article.comments|filter(comment => comment.isConfirmed)|length }}) :</h2>
+				<h2>Comments ({{ article.comments|filter(comment => comment.isConfirmed)|length }}) :</h2>
 			</div>
 			<ul id="comments-container">
 				{% for comment in article.comments|filter(comment => comment.isConfirmed) %}
