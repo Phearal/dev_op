@@ -21,15 +21,15 @@ class AppFixtures extends Fixture
         // USERS
         $users = [
             [
-                "nickname" => "Toto",
-                "email" => "toto@toto.fr",
-                "password" => "toto",
+                "nickname" => "admin",
+                "email" => "admin@admin.com",
+                "password" => "admin",
                 "roles" => ["ROLE_ADMIN"]
             ],
             [
-                "nickname" => "Tata",
-                "email" => "tata@tata.fr",
-                "password" => "tata",
+                "nickname" => "user",
+                "email" => "user@user.com",
+                "password" => "user",
                 "roles" => []
             ],
             [

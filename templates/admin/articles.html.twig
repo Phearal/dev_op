@@ -1,11 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles
-{% endblock %}
+{% block title %}Article index{% endblock %}
 {% block stylesheets %}
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block javascripts %}
+	<script defer src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
 {% endblock %}
 
 {% block body %}
+<section>
+	<a href="{{ path('app_admin') }}" id="admin_menu_link"><i class="bi bi-caret-left-fill"></i> Back to admin menu</a>
+		<h1>Articles</h1>
 	
+		<table data-toggle="table" data-pagination="true" data-search="true">
+			<thead>
+				<tr>
+					<th>Author</th>
+					<th>Published on</th>
+					<th>Content</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for article in articles %}
+				<tr>
+					<td>{{ article.author.nickname }}</td>
+					<td>{{ article.createdAt ? article.createdAt|date("d/m/Y à H:i") : '' }}</td>
+					<td>{{ article.title }}</td>
+					<td class="actions_data">
+						<a href="{{ path('app_article', {'id': article.id}) }}">
+							<i class="bi bi-eye-fill see-data-icon"></i>
+						</a>
+						<a href="{{ path('app_article_edit', {'id': article.id}) }}">
+							<i class="bi bi-pencil-fill edit-data-icon"></i>
+						</a>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</section>
 {% endblock %}

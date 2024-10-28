@@ -184,6 +184,9 @@ header {
     font-size: 1em;
     margin: 0px;
 }
+.like-btn {
+    cursor: pointer;
+}
 .liked-icon {
     color: var(--carrot-orange) !important;
     fill: var(--carrot-orange) !important;

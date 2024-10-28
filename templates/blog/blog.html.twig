@@ -2,6 +2,10 @@
 
 {% block title %}Articles{% endblock %}
 
+{% block javascripts %}
+    <script defer src="{{ asset('js/like.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     <main>
         <div id="article-container">

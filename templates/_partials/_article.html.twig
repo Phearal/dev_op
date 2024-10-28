@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="article-reaction-container">
-			<span>
+			<span  class="like-btn" data-article-id="{{ article.id }}" data-csrf="{{ csrf_token('like_article') }}">
 				<i class="bi bi-hand-thumbs-up{% if app.user and app.user.getLikedArticles().contains(article) %}-fill liked-icon{% endif %}" data-id="{{ article.id }}"></i>
 				<p>{{ article.likes|length }}</p>
 			</span>

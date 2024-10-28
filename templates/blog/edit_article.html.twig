@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Create article
+{% block title %}Edit article
 {% endblock %}
 {% block stylesheets %}
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
@@ -17,10 +17,11 @@
             theme: 'snow'
         });
 
-        var form = document.querySelector('#article-form');
+        let paragraph = document.querySelector("input[id='article_content'");
+        quill.root.innerHTML = paragraph.value;
+        let form = document.querySelector('#article-form');
 		form.onsubmit = function() {
-			var contentInput = document.querySelector("input[id='article_content'");
-			contentInput.value = quill.root.innerHTML;
+			paragraph.value = quill.root.innerHTML;
 		};
 		});
 	</script>
@@ -31,7 +32,7 @@
 	{{ form_start(article_form, {
             'attr': {'id': 'article-form'}
         }) }}
-	<h1>Créer un article</h1>
+	<h1>Edit article</h1>
 	{{ form_row(article_form.title, {
             'attr': {'class': 'form-control mt-2 mb-4'},
             label: 'Title'
@@ -48,7 +49,10 @@
     <div id="editor" class="form-control mt-2 mb-4" style="height: 300px;"></div>
 
     {{ form_widget(article_form.content) }}
-
+	{# {{ form_row(article_form.content, {
+            'attr': {'class': 'form-control mt-2 mb-4'},
+            label: 'Contenu'
+        }) }} #}
 	{{ form_row(article_form.tags, {
             'attr': {'class': 'form-select js-example-basic-multiple'},
             label: 'Tags'
