@@ -21,10 +21,12 @@
 				<i class="bi bi-hand-thumbs-up{% if app.user and app.user.getLikedArticles().contains(article) %}-fill liked-icon{% endif %}" data-id="{{ article.id }}"></i>
 				<p>{{ article.likes|length }}</p>
 			</span>
-			<span>
-				<i class="bi bi-chat-left-text"></i>
-				<p>{{ article.comments|filter(comment => comment.isConfirmed)|length }}</p>
-			</span>
+			<a href="{{ path('app_article', {id: article.id}) }}#comments">
+				<span class="comment-btn">
+					<i class="bi bi-chat-left-text"></i>
+					<p>{{ article.comments|filter(comment => comment.isConfirmed)|length }}</p>
+				</span>
+			</a>
 		</div>
 	</div>
 </article>

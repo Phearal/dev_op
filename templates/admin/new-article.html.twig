@@ -27,11 +27,16 @@
 {% endblock %}
 
 {% block body %}
+<section>
+	<a href="{{ path('app_admin_articles') }}" id="admin_menu_link">
+		<i class="bi bi-caret-left-fill"></i>
+		Back to article list</a>
+	<h1>New article</h1>
+
 	{{ form_errors(article_form) }}
 	{{ form_start(article_form, {
             'attr': {'id': 'article-form'}
         }) }}
-	<h1>Créer un article</h1>
 	{{ form_row(article_form.title, {
             'attr': {'class': 'form-control mt-2 mb-4'},
             label: 'Title'
@@ -58,5 +63,5 @@
 
 	<button type="submit" class="btn btn-lg btn-primary form-confirm mb-3">Confirm</button>
 	{{ form_end(article_form) }}
-
+</section>
 {% endblock %}

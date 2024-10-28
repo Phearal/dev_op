@@ -15,7 +15,7 @@
 	<section>
     <a href="{{ path('app_admin') }}" id="admin_menu_link"><i class="bi bi-caret-left-fill"></i> Back to admin menu</a>
 		<h1>Tags</h1>
-
+		<a href="{{ path('app_tag_new') }}" class="new-data-btn mb-5">New tag</a>
 		<table data-toggle="table" data-pagination="true" data-search="true">
 			<thead>
 				<tr>
@@ -41,5 +41,4 @@
 			</tbody>
 		</table>
 	</section>
-			<a href="{{ path('app_tag_new') }}" class="new-data-btn mb-5">Nouveau tag</a>
 {% endblock %}

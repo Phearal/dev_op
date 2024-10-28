@@ -191,7 +191,9 @@ header {
     color: var(--carrot-orange) !important;
     fill: var(--carrot-orange) !important;
 }
-
+.comment-btn:hover i {
+    color: var(--carrot-orange);
+}
 @media (max-width: 1250px) {
     #article-container {
         width: 775px;
