@@ -5,6 +5,4 @@
  * which should already be in your base.html.twig.
  */
 //import './css/style.css';
-import Quill from 'quill';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

@@ -1,14 +1,14 @@
-// Sélectionner tous les boutons de like
+// Selects all the like buttons
 document.querySelectorAll('.like-btn').forEach(button => {
     button.addEventListener('click', function () {
         const articleId = this.dataset.articleId; // ID de l'article
         const csrfToken = this.dataset.csrf; // Token CSRF
 
-        // Sélectionne l'icône et le compteur associés au bouton
+        // Select the icon and counter associated
         const icon = this.querySelector('i');
         const likeCount = this.querySelector('p');
 
-        // Envoie de la requête POST pour liker/unliker l'article
+        // Send POST request to add/remove like from post
         fetch(`/like/${articleId}`, {
             method: 'POST',
             headers: {
@@ -20,10 +20,10 @@ document.querySelectorAll('.like-btn').forEach(button => {
         })
         .then(response => response.json())
         .then(data => {
-            // Met à jour le compteur de likes
+            // Updates like count
             likeCount.textContent = data.totalLikes;
 
-            // Ajoute ou retire la classe 'liked-icon' sur l'icône
+            // Adds/removes class 'liked-icon' on the icon
             if (data.liked) {
                 icon.classList.add('liked-icon', 'bi-hand-thumbs-up-fill');
                 icon.classList.remove('bi-hand-thumbs-up');

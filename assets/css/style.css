@@ -208,3 +208,8 @@ header {
 }
 /* ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES - ARTICLES */
 
+@media (max-width: 400px) {
+    .article-card {
+        width: 95% !important;
+    }
+}
