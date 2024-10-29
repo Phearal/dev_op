@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Exception;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\ArticleType;
@@ -159,6 +160,28 @@ class BlogController extends AbstractController
             'article' => $article,
             'article_form' => $form,
         ]);
+    }
+
+    #[Route('/admin/article/delete/{id}', name: 'app_article_delete', methods: ['POST'])]
+    public function deleteArticle(Request $request, Article $article, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete-item'.$article->getId(), $request->request->get('_token'))) {
+            try {
+                $comments = $article->getComments();
+                foreach ($comments as $comment) {
+                    $entityManager->remove($comment);
+                }
+                $entityManager->remove($article);
+                $entityManager->flush();
+                return new JsonResponse(['message' => "Article was deleted successfully."], Response::HTTP_OK);
+            } catch (Exception $e) {
+                return new JsonResponse(['message' => "Something went wrong."], Response::HTTP_BAD_REQUEST);
+            }
+        } else {
+            return new JsonResponse(['message' => "Invalid token."], Response::HTTP_BAD_REQUEST);
+        }
+
+        return $this->redirectToRoute('app_admin_articles', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/like/{id}', name: 'like_article')]
