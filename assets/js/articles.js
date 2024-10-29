@@ -33,18 +33,9 @@ $(document).ready(function() {
         });
     });
 
-    function showToast(message, type = 'success') {
-        var toastHtml = `
-            <div class="toast ${type === 'error' ? 'text-danger' : 'text-success'}" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <strong class="mr-auto">${type === 'error' ? 'Erreur' : 'Confirmation'}</strong>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="toast-body">${message}</div>
-            </div>
-        `;
+    function showToast(message) {
+        var toastHtml = `<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Confirmation</strong></div><div class="toast-body">${message}</div></div>`;
+        
         $('#toast-container').append(toastHtml);
         var $toast = $('#toast-container .toast:last');
         $toast.toast({ autohide: true, delay: 5000 });
