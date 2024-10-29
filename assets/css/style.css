@@ -194,6 +194,26 @@ header {
 .comment-btn:hover i {
     color: var(--carrot-orange);
 }
+.silver-btn {
+    background-color: var(--jet);
+    border: none;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1rem;
+    align-self: center;
+    margin: 20px 0 10px 0;
+}
+.silver-btn:hover {
+    background-color: var(--silver);
+}
+.modal-content, .modal-footer {
+    background: var(--eerie-black);
+}
+.modal-body {
+    color: var(--silver);
+}
+.modal-header h1 {
+    margin: unset;
+}
 @media (max-width: 1250px) {
     #article-container {
         width: 775px;

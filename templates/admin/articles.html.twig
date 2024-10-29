@@ -36,6 +36,9 @@
 						<a href="{{ path('app_article_edit', {'id': article.id}) }}">
 							<i class="bi bi-pencil-fill edit-data-icon"></i>
 						</a>
+						<button class="btn" id="delete-data-btn" data-id="{{ article.id }}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<i class="bi bi-trash3-fill delete-data-icon"></i>
+						</button>
 				</tr>
 			{% else %}
 				<tr>
@@ -45,4 +48,5 @@
 			</tbody>
 		</table>
 	</section>
+	{% include "_partials/widgets/_modal.html.twig" %}
 {% endblock %}

@@ -16,4 +16,7 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
 ];
