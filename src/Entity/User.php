@@ -46,9 +46,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
-    #[ORM\ManyToMany(targetEntity: Comment::class, mappedBy: 'comment_likes')]
-    private Collection $liked_comments;
-
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Article::class)]
     private Collection $articles;
 
@@ -58,7 +55,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->createdAt = new \DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
         $this->liked_articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->liked_comments = new ArrayCollection();
         $this->articles = new ArrayCollection();
     }
 
@@ -208,33 +204,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($comment->getUser() === $this) {
                 $comment->setUser(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Comment>
-     */
-    public function getLikedComments(): Collection
-    {
-        return $this->liked_comments;
-    }
-
-    public function addLikedComment(Comment $likedComment): static
-    {
-        if (!$this->liked_comments->contains($likedComment)) {
-            $this->liked_comments->add($likedComment);
-            $likedComment->addCommentLike($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLikedComment(Comment $likedComment): static
-    {
-        if ($this->liked_comments->removeElement($likedComment)) {
-            $likedComment->removeCommentLike($this);
         }
 
         return $this;

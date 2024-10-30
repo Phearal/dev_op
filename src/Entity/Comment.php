@@ -34,9 +34,6 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'liked_comments')]
-    private Collection $likes;
-
     #[ORM\Column(nullable: true)]
     private ?bool $confirmed = null;
 
@@ -44,7 +41,6 @@ class Comment
     {
         $timezone = new DateTimeZone('Europe/Paris');
         $this->createdAt = new \DateTimeImmutable('now', $timezone);
-        $this->likes = new ArrayCollection();
         $this->setConfirmed(0);
     }
 
@@ -109,30 +105,6 @@ class Comment
     public function setUser(?User $user): static
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getLikes(): Collection
-    {
-        return $this->likes;
-    }
-
-    public function addLike(User $like): static
-    {
-        if (!$this->likes->contains($like)) {
-            $this->likes->add($like);
-        }
-
-        return $this;
-    }
-
-    public function removeLike(User $like): static
-    {
-        $this->likes->removeElement($like);
 
         return $this;
     }

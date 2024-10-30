@@ -125,6 +125,9 @@ tr, td {
     justify-content: space-around;
     align-items: center;
 }
+.delete-button {
+    padding: 0;
+}
 .see-data-icon, .edit-data-icon, .delete-data-icon {
     color: var(--silver);
     cursor: pointer;

@@ -153,7 +153,7 @@ class BlogController extends AbstractController
             $formData = $form->getData();
             $entityManager->persist($article);
             $entityManager->flush();
-
+            $this->addFlash("success", "Article modified successfully.");
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 

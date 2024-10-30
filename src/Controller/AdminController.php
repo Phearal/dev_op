@@ -22,17 +22,6 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
-        return $this->render('admin/admin.html.twig', [
-        ]);
-    }
-
-    #[Route('/admin/utilisateurs', name: 'app_admin_users')]
-    public function users(EntityManagerInterface $entityManager): Response
-    {
-        $users = $entityManager->getRepository(User::class)->findAll();
-
-        return $this->render('admin/users.html.twig', [
-            'users' => $users
-        ]);
+        return $this->render('admin/admin.html.twig', []);
     }
 }
