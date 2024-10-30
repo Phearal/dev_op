@@ -134,6 +134,7 @@ class BlogController extends AbstractController
             
             $entityManager->persist($article);
             $entityManager->flush();
+            $this->addFlash("success", "Article created successfully.");
             return $this->redirectToRoute('app_article', ['id' => $article->getId()]);
         }
 
