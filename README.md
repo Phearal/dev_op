@@ -1,6 +1,6 @@
 # DEV | OP
 #### Video Demo:  https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab
-#### Description:
+## Description:
 Dev | OP is a blog made with [Symfony](https://symfony.com/) containing articles about web developpement and dev related project management.
 
 As a visitor you can read the article and create an account.
@@ -9,7 +9,19 @@ With a non admin account you can comment the articles and like them which adds t
 
 With an admin account you get access to an admin menu allowing you to CRUD articles, tags, users and comments (comments need to be validated by an admin before being visible).
 
-#### Install:
+### Important files:
+#### Controllers:
+- `AdminController.php` : Contains a single route to the admin menu.
+- `RegistrationController.php` : Registration route responsible for the creation of a new User instance on form submission. Makes use of [Symfony's password hasher](https://symfony.com/doc/6.4/security/passwords.html#hashing-the-password) for the user's password and signs in the user automatically on submit.
+- `SecurityController.php` :
+- `UserController.php` :
+- `BlogController.php` : Routes related to blog articles
+    - 
+- `TagController.php` :
+- `CommentController.php` :
+
+
+## Install:
 Make sure [git](https://git-scm.com/downloads), [Symfony CLI](https://symfony.com/download) and [Composer](https://getcomposer.org/) are installed.
 1. Clone the project with the command `git clone https://github.com/Phearal/dev_op2.git`.
 2. Open a terminal on project root and run `composer install`.
