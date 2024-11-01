@@ -29,7 +29,7 @@ class BlogController extends AbstractController
     #[Route('/admin/articles', name: 'app_admin_articles')]
     public function articles(EntityManagerInterface $entityManager): Response
     {
-        $articles = $entityManager->getRepository(Article::class)->findAll();
+        $articles = $entityManager->getRepository(Article::class)->findByMostRecent();
         return $this->render('admin/articles.html.twig', [
             "articles" => $articles
         ]);

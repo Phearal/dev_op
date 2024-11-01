@@ -1,12 +1,18 @@
 $(document).ready(function() {
-    $('.delete-button').click(function() {
-        var articleId = $(this).data('id');
-        var csrfToken = $(this).data('csrf-token');
+    function initializeDeleteButtons() {
+        let deleteButtons = document.querySelectorAll(".delete-button");
+        $(deleteButtons).off('click').on('click', function() {
+            var articleId = $(this).data('id');
+            var csrfToken = $(this).data('csrf-token');
+            $('#confirm-delete-btn').data('id', articleId);
+            $('#confirm-delete-btn').data('token', csrfToken);
+        });
+    }
 
-        $('#confirm-delete-btn').data('id', articleId);
-        $('#confirm-delete-btn').data('token', csrfToken);
+    initializeDeleteButtons();
 
-        console.log('Article ID to delete:', articleId);
+    $('.page-item').click(function() {
+        initializeDeleteButtons();
     });
 
     $('#confirm-delete-btn').click(function() {
@@ -33,8 +39,8 @@ $(document).ready(function() {
         });
     });
 
-    function showToast(message) {
-        var toastHtml = `<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Confirmation</strong></div><div class="toast-body">${message}</div></div>`;
+    function showToast(message, type = 'success') {
+        var toastHtml = `<div class="toast ${type}" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Confirmation</strong></div><div class="toast-body">${message}</div></div>`;
         
         $('#toast-container').append(toastHtml);
         var $toast = $('#toast-container .toast:last');
