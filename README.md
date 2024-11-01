@@ -1,5 +1,5 @@
 # DEV | OP
-#### Video Demo:  https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab
+#### Video Demo:  https://www.youtube.com/watch?v=aE0oLazz0Zw
 ## Description:
 Dev | OP is a blog made with [Symfony](https://symfony.com/) containing articles about web developpement and dev related project management.
 
